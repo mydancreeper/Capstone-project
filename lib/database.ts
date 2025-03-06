@@ -1,6 +1,6 @@
 import {neon} from "@neondatabase/serverless"
 
-const sql = neon("postgresql://CapstoneDB_owner:npg_GpE6oAHkM8sR@ep-delicate-star-abynrs6w-pooler.eu-west-2.aws.neon.tech/CapstoneDB?sslmode=require")
+const sql = neon(process.env.DATABASE_URL!)
 
 export async function UpdateUsers(username:string ,password:string) {
     try {

@@ -1,14 +1,13 @@
 "use client";
-import Image from "next/image";
 import Navbar from "../../components/navbar";
 
 export default function Home() {
 
   async function SendSignupData() {
-    let password = (document.getElementById("password") as HTMLInputElement).value;
-    let username = (document.getElementById("username") as HTMLInputElement).value;
+    const password = (document.getElementById("password") as HTMLInputElement).value;
+    const username = (document.getElementById("username") as HTMLInputElement).value;
 
-    const response = await fetch(`../api/signup`, {method: "POST" , body: JSON.stringify({username: username, password: password})})
+    await fetch(`../api/signup`, {method: "POST" , body: JSON.stringify({username: username, password: password})})
 
   }
 

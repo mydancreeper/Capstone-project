@@ -1,6 +1,6 @@
 "use client";
 import Sidebar from "../../components/sidebar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function TaskForm() {
   const[tasks,SetTasks] = useState(0);
@@ -23,10 +23,19 @@ function TaskForm() {
 
 export default function Home() {
   const [showTaskForm, setShowTaskForm] = useState(false);
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
   function RevealTaskForm() {
     setShowTaskForm(true);
   }
+
+  useEffect(() => {
+    const storedPassword = sessionStorage.getItem("password");
+    const storedUsername = sessionStorage.getItem("username");
+    setPassword(storedPassword || "");
+    setUsername(storedUsername || "");
+  }, []) 
 
   return (
     <div> 
@@ -38,6 +47,8 @@ export default function Home() {
         <div className ="relative top-[2rem]">
           {showTaskForm ? <TaskForm /> : null}
         </div>
+        <p>Username: {username}</p>
+        <p>Password: {password}</p>
       </div>
    </div>
   );

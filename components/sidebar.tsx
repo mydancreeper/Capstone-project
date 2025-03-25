@@ -16,7 +16,8 @@ export default function Sidebar() {
     
     <div className="flex items-center space-x-3 px-2 mb-10">
       <h1 className="text-xl font-bold text-gray-800 dark:text-white">
-        {username}'s<br/>Dashboard
+         {/* &#39 is used to represent an apostrophe as Vercel doesn't accept a normal ' */}
+        {username}&#39;s<br/>Dashboard
       </h1>
     </div>
 

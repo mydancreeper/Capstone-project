@@ -1,6 +1,15 @@
 "use client";
+import { list } from "postcss";
 import Sidebar from "../../components/sidebar";
 import { useState, useEffect } from "react";
+
+// Defines the attributes of the items in the Task array
+interface Tasks {
+  title: string;
+  description: string;
+  date: Date;
+  id: number;
+}
 
 function TaskForm() {
   const [username, setUsername] = useState("");
@@ -123,7 +132,7 @@ function Tasks() {
     <div className="space-y-6 max-w-2xl mx-auto">
       <h1 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">Tasks</h1>
       {/* uses the map function to display the following html for each item in the tasks array */}
-      {tasks.map((task: any, index: number) => (
+      {tasks.map((task: Tasks, index: number) => (
         <div 
           key={index} 
           className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 transition-all hover:shadow-md"

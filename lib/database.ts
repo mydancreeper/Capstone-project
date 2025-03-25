@@ -3,7 +3,7 @@ import {neon} from "@neondatabase/serverless"
 const sql = neon(process.env.DATABASE_URL!)
 
 // Function to get the user from the table, it's used in the Update user function to check if the user already exists
-export async function GetUser(username:string ,password:string) {
+export async function GetUser(username:string) {
     try {
         const users = await sql `
             SELECT * FROM users
@@ -19,7 +19,7 @@ export async function GetUser(username:string ,password:string) {
 
 // Function to update the user table with the new user, called upon in the sign up route
 export async function UpdateUsers(username:string ,password:string) {
-    const user = await GetUser(username, password);
+    const user = await GetUser(username);
         // If the user already exists, the function returns false
         if (user!.length != 0) {
             console.log("User already exists")

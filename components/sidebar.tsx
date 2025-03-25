@@ -1,12 +1,39 @@
 "use client";
+import { useState, useEffect} from "react";
 
+// Sidebar component
 export default function Sidebar() {
+    const [username, setUsername] = useState("");
+
+    useEffect(() => {
+        const storedUsername = sessionStorage.getItem("username");
+        setUsername(storedUsername || "");
+      }, [])
+
     return(
-        <nav className="h-full bg-white border-gray-200 dark:bg-gray-600">
-            <div className="fixed top-0 left-0 h-full w-1/6 px-3 py-4 bg-gray-200 dark:bg-gray-600">
-                <a href ="/home" className="text-2xl block py-2 px-3 font-bold text-center">Dashboard</a>
-                <a href="/tasks" className= "text-center block py-2 px-3 text-black rounded-sm hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Tasks</a>
-            </div>
-        </nav>
+<nav >
+  <div className="fixed top-0 left-0 h-full w-64 px-6 py-8 flex flex-col bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700 shadow-sm">
+    
+    <div className="flex items-center space-x-3 px-2 mb-10">
+      <h1 className="text-xl font-bold text-gray-800 dark:text-white">
+        {username}'s<br/>Dashboard
+      </h1>
+    </div>
+
+    <div className="flex-1 flex flex-col space-y-2">
+      <a 
+        href="/home" 
+        className="flex items-center px-4 py-3 text-sm font-medium rounded-lg
+                 text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400
+                 hover:bg-blue-50 dark:hover:bg-blue-900/30
+                 transition-colors duration-200"
+      > 
+        Dashboard
+      </a>
+    </div>
+
+    
+  </div>
+</nav>
     )
 }
